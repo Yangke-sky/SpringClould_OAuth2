@@ -32,11 +32,11 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
                 .inMemory()   //这里我们直接硬编码创建，当然也可以像Security那样自定义或是使用JDBC从数据库读取
                 .withClient("web")   //客户端名称，随便起就行
                 .secret(encoder.encode("654321"))      //只与客户端分享的secret，随便写，但是注意要加密
-                .autoApprove(false)    //自动审批，这里关闭，要的就是一会体验那种感觉
+                .autoApprove(true)    //自动审批，这里关闭，要的就是一会体验那种感觉
                 .scopes("book", "user", "borrow")     //授权范围，这里我们使用全部all
 
                 // 选择需要授权的微服务，选择授权后跳转到此页面
-                .redirectUris("http://localhost:8201/login")
+                .redirectUris("http://localhost:8201/login", "http://localhost:8101/login", "http://localhost:8301/login")
 
                 .authorizedGrantTypes("client_credentials", "password", "implicit", "authorization_code", "refresh_token");
         //授权模式，一共支持5种，除了之前我们介绍的四种之外，还有一个刷新Token的模式
