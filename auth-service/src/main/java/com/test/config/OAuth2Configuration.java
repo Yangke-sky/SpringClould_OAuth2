@@ -52,15 +52,15 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
                 .checkTokenAccess("permitAll()");     //允许所有的Token查询请求
     }
 
-    /*@Override
+    @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         endpoints
                 .authenticationManager(manager);
         //由于SpringSecurity新版本的一些底层改动，这里需要配置一下authenticationManager，才能正常使用password模式
-    }*/
+    }
 
      // 刷新Token
-    @Resource
+    /*@Resource
     UserDetailsService service;
 
     @Override
@@ -68,5 +68,5 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
         endpoints
                 .userDetailsService(service)
                 .authenticationManager(manager);
-    }
+    }*/
 }
